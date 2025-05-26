@@ -9,10 +9,6 @@ import (
 
 // https://www.acmicpc.net/problem/3273 - 두 수의 합
 
-type Pair struct {
-	A, B int
-}
-
 func main() {
 	writer := bufio.NewWriter(os.Stdout)
 	reader := bufio.NewReader(os.Stdin)
@@ -37,16 +33,16 @@ func main() {
 		log.Fatal(err)
 	}
 
-	pairs := make([]Pair, 0)
+	count := 0
 	idxMap := make(map[int]int)
 	for i, num := range arr {
-		if j, ok := idxMap[target-num]; ok {
-			pairs = append(pairs, Pair{A: j, B: i})
+		if _, ok := idxMap[target-num]; ok {
+			count++
 		}
 		idxMap[num] = i
 	}
 
-	if _, err := fmt.Fprintln(writer, len(pairs)); err != nil {
+	if _, err := fmt.Fprintln(writer, count); err != nil {
 		log.Fatal(err)
 	}
 }
