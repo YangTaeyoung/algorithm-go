@@ -2,6 +2,8 @@ package main
 
 import "fmt"
 
+// https://school.programmers.co.kr/learn/courses/30/lessons/12909 - 올바른 괄호
+
 type stack []rune
 
 func (s *stack) push(n rune) {
